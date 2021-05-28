@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix } = require('./config.json');
 const authUser = require('./config.json').adminID;
 const fs = require('fs');
-
+// NEED TOKEN ADDON
 const cooldowns = new Discord.Collection();
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
