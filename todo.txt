@@ -4,3 +4,31 @@ Command modules:
  - 
 
 TODO:
+RNG command options:
+ - add/show
+ add options:
+  - menu system => 1) pick [acc]/armor/wep
+                   2) 
+
+Output:
+ - put in what we did sell it for -> tallies profits
+ - put in what in spent & success rates -> tells us what we need to sell at to make profit (% based or just flat profit)
+ - set up a successive bot where you start up each enhancing session with the command and sent to dms
+ - give % rates for downgrades
+ - 
+
+Table setup:
+ - UserID, Stack used, Date, Time, Disto, 
+
+Placeholder Module:
+module.exports = {
+    name: '',
+    description: '',
+    use: ``,
+    type: '',
+    auth: '',
+    cooldown: 5,
+    execute(message, args) {
+    
+    }
+}

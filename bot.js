@@ -1,15 +1,14 @@
 const Discord = require('discord.js');
+const { tokenDorime, adminID } = require('F:\\secrets.json');
 const { prefix } = require('./config.json');
-const authUser = require('./config.json').adminID;
 const fs = require('fs');
-// NEED TOKEN ADDON
+
 const cooldowns = new Discord.Collection();
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 
 let commandFileList = []; // [folder, file]
-commandFolderList.forEach(folder => 
-    fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js')).forEach(file => commandFileList.push([folder, file])));
+commandFolderList.forEach(folder => fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js')).forEach(file => commandFileList.push([folder, file])));
 
 for (const file of commandFileList) {
     const command = require(`./commands/${file[0]}/${file[1]}`);
@@ -27,7 +26,7 @@ bot.on('ready', () => {
     });
 });
 
-bot.login(token);
+bot.login(tokenDorime);
 
 bot.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -58,7 +57,7 @@ bot.on('message', message => {
     }
 
     try {
-        if (commandObject.auth === 'admin' && message.author.id != authUser)
+        if (commandObject.auth === 'admin' && message.author.id != adminID)
             message.reply('insufficient permission to use that command.');
         else if (command === 'help')
             commandObject.execute(message, args, commandFileList);
@@ -70,4 +69,4 @@ bot.on('message', message => {
     }
 });
 
-bot_client.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+bot.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
